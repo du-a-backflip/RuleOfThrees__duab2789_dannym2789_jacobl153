@@ -1,2 +1,4 @@
 duaB -- 2025-01-09 10:40
 * Added updated design doc - roles were changed
+jacobL -- 2025-01-09 10:53
+* Keys added for MerriamWebster API and Giphy API

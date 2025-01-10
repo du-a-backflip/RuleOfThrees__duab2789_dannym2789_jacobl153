@@ -12,3 +12,6 @@ duaB -- 2025-01-09 23:41
 
 jacobL -- 2025-01-10 7:40
 * Started API Handling for MerriamWebster API
+
+dannyM -- 2025-01-10 10:27
+* Stopped tracking APIs on repository

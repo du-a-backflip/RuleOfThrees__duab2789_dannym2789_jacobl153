@@ -9,3 +9,6 @@ duaB -- 2025-01-09 23:41
 * Added app routing to __init__.py
 * Added requirements.txt
 * Updated README with description of project
+
+jacobL -- 2025-01-10 7:40
+* Started API Handling for MerriamWebster API

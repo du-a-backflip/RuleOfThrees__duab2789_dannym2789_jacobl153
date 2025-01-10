@@ -1,4 +1,11 @@
 duaB -- 2025-01-09 10:40
 * Added updated design doc - roles were changed
+
 jacobL -- 2025-01-09 10:53
 * Keys added for MerriamWebster API and Giphy API
+
+duaB -- 2025-01-09 23:41
+* Added html files
+* Added app routing to __init__.py
+* Added requirements.txt
+* Updated README with description of project

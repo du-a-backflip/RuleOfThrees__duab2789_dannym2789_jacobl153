@@ -16,3 +16,6 @@ jacobL -- 2025-01-10 7:40
 dannyM -- 2025-01-10 10:27
 * Stopped tracking APIs on repository
 * Added quotesAPI.txt
+
+jacobL -- 2025-01-10 11:00
+* Adding needed info from MerriamWebster API to databse

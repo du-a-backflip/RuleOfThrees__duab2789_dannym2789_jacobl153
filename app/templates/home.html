@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <h1>BrainThreesers - Home</h1>
+    <div class = "navbar">
+        <nav>
+            <ul>
+                <li><a href="{{url_for('home')}}">Home</a></li>
+                <li><a href="{{url_for('settings')}}">Settings</a></li>
+            </ul>
+        </nav>
+    </div>
+    <br>
+    <div class = "gameList">
+        <h2>Games</h2>
+        <ul>
+            <li><a href="{{url_for('view')}}">Memory Match</a></li>
+            <li><a href="{{url_for('view')}}">Typing Test</a></li>
+            <li><a href="{{url_for('view')}}">Word Guesser</a></li>
+        </ul>
+    </div>
+    <br>
+    <a href = "{{url_for('login')}}" style="text-decoration: none;"> Login </a>
+    <br>
+    <a href = "{{url_for('register')}}" style="text-decoration: none;"> Create Account </a>
+</body>
+</html>

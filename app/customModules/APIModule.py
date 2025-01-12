@@ -14,6 +14,7 @@ def getDict():
         content = file.read().strip()
         word = "flood"
         file.close()
+        dictionary = []
         with open('words.txt', 'r') as file:
             for line in file:
                 word = line.strip()
@@ -21,10 +22,9 @@ def getDict():
                 API = urllib.request.urlopen(url)
                 data = json.loads(API.read())[0]
                 definition = data['shortdef'][0]
-                word = data['meta']['id']
-                syn_list = data['meta']['syns'][0]
-                print([word, definition, syn_list]) # Not FINISHED DON'T RUN
+                syn_list = str(data['meta']['syns'][0]).replace("[", "").replace(']', "").replace('\'', "")
+                dictionary.append(word + "+" + definition + "+" + syn_list) 
+        return(dictionary)
     except Exception as e:
         print(e)
 
-getDict()

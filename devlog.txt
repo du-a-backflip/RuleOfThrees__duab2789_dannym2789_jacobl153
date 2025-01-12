@@ -18,4 +18,9 @@ dannyM -- 2025-01-10 10:27
 * Added quotesAPI.txt
 
 jacobL -- 2025-01-10 11:00
-* Adding needed info from MerriamWebster API to databse
+* Adding needed info from MerriamWebster API to database
+
+jacobL -- 2025-01-12 11:00
+* Completed word game part of game_info table.
+
+

@@ -23,3 +23,6 @@ jacobL -- 2025-01-10 11:00
 
 jacobL -- 2025-01-12 11:00
 * Completed word game part of game_info table.
+
+dannyM -- 2025-01-13 18:02
+* Added static folder with css and js subfolders

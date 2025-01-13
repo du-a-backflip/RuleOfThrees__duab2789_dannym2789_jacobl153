@@ -1,6 +1,7 @@
 import sqlite3, os
 from flask import Flask, request, render_template, redirect, url_for, flash, session
 from customModules import APIModule
+import random
 
 app = Flask(__name__)
 app.secret_key = os.urandom(32)
@@ -44,15 +45,17 @@ def setup_word_API():
     except sqlite3.IntegrityError:
         flash('Database Error')
 
-def get_word_game():
+def get_rand_word():
     try:
         with sqlite3.connect('api_info.db') as conn:
             c = conn.cursor()
-            result = c.execute("SELECT * FROM game_info WHERE GameName = ?", ("def_game",)).fetchall()
-            print(result)
+            rand = random.randint(1, 97)
+            result = c.execute("SELECT * FROM game_info WHERE (id, GameName) = (?, ?)", (rand, "def_game")).fetchone()
+            print(result, rand)
     except sqlite3.IntegrityError:
         print('Database Error')
 
+<<<<<<< HEAD
 def findUser(username, password):
     db = sqlite3.connect('user_info.db')
     c = db.cursor()
@@ -61,3 +64,9 @@ def findUser(username, password):
     if user is not None:
         return password == user[1]
     return False
+=======
+
+
+
+
+>>>>>>> 7352d6557cb3f30553f1e2806ecfab48804bda01

@@ -1,6 +1,6 @@
 import sqlite3, os
 from flask import Flask, request, render_template, redirect, url_for, flash, session
-import APIModule
+from customModules import APIModule
 import random
 
 app = Flask(__name__)
@@ -54,7 +54,6 @@ def get_rand_word():
     except sqlite3.IntegrityError:
         print('Database Error')
 
-get_rand_word()
 
 
 

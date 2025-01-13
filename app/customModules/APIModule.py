@@ -5,7 +5,7 @@
 # 2024-01-10
 
 # import requests
-import json, random, requests, urllib.request
+import json, random, urllib.request
 from urllib.request import Request, urlopen
 
 def getDict():
@@ -23,8 +23,7 @@ def getDict():
                 data = json.loads(API.read())[0]
                 definition = data['shortdef'][0]
                 syn_list = str(data['meta']['syns'][0]).replace("[", "").replace(']', "").replace('\'', "")
-                dictionary.append(word + "+" + definition + "+" + syn_list) 
+                dictionary.append(word + "+" + definition + "+" + syn_list)
         return(dictionary)
     except Exception as e:
         print(e)
-

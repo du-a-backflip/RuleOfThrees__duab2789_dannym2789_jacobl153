@@ -1,6 +1,6 @@
 import sqlite3, os
 from flask import Flask, request, render_template, redirect, url_for, flash, session
-import APIModule
+from customModules import APIModule
 
 app = Flask(__name__)
 app.secret_key = os.urandom(32)
@@ -29,6 +29,7 @@ def init_db():
                 )''')
         conn.commit()
         conn.close()
+
 def setup_word_API():
     try:
         with sqlite3.connect('api_info.db') as conn:
@@ -52,8 +53,11 @@ def get_word_game():
     except sqlite3.IntegrityError:
         print('Database Error')
 
-init_db()
-
-
-
-    
+def findUser(username, password):
+    db = sqlite3.connect('user_info.db')
+    c = db.cursor()
+    c.execute("SELECT * FROM users WHERE username = ?", (username, ))
+    user = c.fetchone()
+    if user is not None:
+        return password == user[1]
+    return False

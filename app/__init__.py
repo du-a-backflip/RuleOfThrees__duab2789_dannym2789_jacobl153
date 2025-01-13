@@ -6,16 +6,27 @@ from customModules import APIModule, DBModule
 app = Flask(__name__)
 app.secret_key = os.urandom(32)
 
+DBModule.init_db()
+
 @app.route('/', methods = ['GET', 'POST'])
 def home():
     return render_template("home.html")
 
 @app.route('/login', methods = ['GET', 'POST'])
 def login():
+    if 'username' in session:
+        return redirect(url_for('home'))
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        if DBModule.findUser(username, password):
+            session['username'] = username
+            return redirect(url_for('home'))
     return render_template("login.html")
 
 @app.route('/register', methods = ['GET', 'POST'])
 def register():
+    
     return render_template("register.html")
 
 @app.route('/settings', methods = ['GET', 'POST'])

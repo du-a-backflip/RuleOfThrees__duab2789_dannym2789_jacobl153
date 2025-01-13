@@ -1,5 +1,25 @@
 duaB -- 2025-01-09 10:40
 * Added updated design doc - roles were changed
-
 duaB -- 2025-01-09 11:01
 * Started adding routing to app
+jacobL -- 2025-01-09 10:53
+* Keys added for MerriamWebster API and Giphy API
+
+duaB -- 2025-01-09 23:41
+* Added html files
+* Added app routing to __init__.py
+* Added requirements.txt
+* Updated README with description of project
+
+jacobL -- 2025-01-10 7:40
+* Started API Handling for MerriamWebster API
+
+dannyM -- 2025-01-10 10:27
+* Stopped tracking APIs on repository
+* Added quotesAPI.txt
+
+jacobL -- 2025-01-10 11:00
+* Adding needed info from MerriamWebster API to database
+
+jacobL -- 2025-01-12 11:00
+* Completed word game part of game_info table.

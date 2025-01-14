@@ -7,24 +7,34 @@ var maxInterval = 5000;
 var topscore = 0;
 var timeDiff = 0;
 var waitClick = false;
+var initial = true;
+var early = false;
 var randomTime = 0;
+var timeID = 0;
 
 function reaction() {
     randomTime = Math.floor(Math.random() * (maxInterval - minInterval)) + minInterval;
+    if (!early){
+        text.textContent = "Get Ready!";
+        interactable.style.background = "#0096FF";
 
-    text.textContent = "Get Ready!";
-    interactable.style.background = "#0096FF";
-
-    setTimeout(function() {
-        timeDiff = Date.now();
-        interactable.style.background = "#009578";
-        waitClick = true;
-    }, randomTime);
-
+        timeID = setTimeout(function() {
+            timeDiff = Date.now();
+            text.textContent = "Click!";
+            interactable.style.background = "#009578";
+            waitClick = true;
+        }, randomTime);
+    }
+    else{
+        text.textContent = "Too early! Click to try again!";
+        interactable.style.background = "#C41E3A";
+        clearTimeout(timeID);
+    }
 }
 
 interactable.addEventListener("click", function(){
     if (waitClick){
+        initial = false;
         score = Date.now() - timeDiff;
         waitClick = false;
         text.textContent = score + " milliseconds";
@@ -33,9 +43,20 @@ interactable.addEventListener("click", function(){
         if (score < topscore || hightxt.innerHTML == ""){
             topscore = score;
             hightxt.textContent = score + " milliseconds";
+            initial = true;
         }
     }
+    else if (early){
+        early = false;
+        reaction();
+    }
     else{
+        if(!initial){
+            early = true;
+        }
+        else{
+            initial = false;
+        }
         reaction();
     }
 });

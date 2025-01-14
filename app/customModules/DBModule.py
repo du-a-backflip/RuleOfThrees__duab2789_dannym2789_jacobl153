@@ -55,8 +55,15 @@ def get_rand_word():
     except sqlite3.IntegrityError:
         print('Database Error')
 
-<<<<<<< HEAD
-def findUser(username, password):
+def addUser(username, password):
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+    query = "INSERT INTO users (username, password) VALUES (?, ?)"
+    c.execute(query, (username, password))
+    db.commit()
+    db.close()
+
+def userExists(username, password):
     db = sqlite3.connect('user_info.db')
     c = db.cursor()
     c.execute("SELECT * FROM users WHERE username = ?", (username, ))
@@ -64,9 +71,14 @@ def findUser(username, password):
     if user is not None:
         return password == user[1]
     return False
-=======
 
-
-
-
->>>>>>> 7352d6557cb3f30553f1e2806ecfab48804bda01
+def registerUser(username, password):
+    db = sqlite3.connect('user_info.db')
+    c = db.cursor()
+    c.execute("SELECT * FROM users WHERE username = ?", (username, ))
+    user = c.fetchone()
+    if user is None:
+        addUser(username, password)
+        return True
+    return False
+        

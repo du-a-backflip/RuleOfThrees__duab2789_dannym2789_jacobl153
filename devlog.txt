@@ -29,3 +29,9 @@ jacobL -- 2025-01-12 11:00
 duaB -- 2025-01-13 10:56
 * Added ability to login
 * Fixed errors importing in other modules
+
+dannyM -- 2025-01-13 18:02
+* Added static folder with css and js subfolders
+
+duaB -- 2025-01-14 3:22
+* Added methods to register and add users to database

@@ -65,6 +65,10 @@ def word_guesser():
     syn_list = all_info[2].split(", ")
     return render_template("word_guess.html", word = word, definition = definition, syn_list = syn_list)
 
+@app.route('/reaction', methods =['GET', 'POST'])
+def reaction_speed():
+    return render_template('reaction.html')    
+
 
 if __name__ == "__main__":
     app.debug = True

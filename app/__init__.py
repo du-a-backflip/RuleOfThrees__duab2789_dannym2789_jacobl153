@@ -32,7 +32,10 @@ def register():
         username = request.form['username']
         password = request.form['password']
         password1 = request.form['password1']
-        if 
+        if password = password1:
+            if DBModule.registerUser(username, password):
+                session ['username'] = username
+                return redirect(url_for('home'))
     return render_template("register.html")
 
 @app.route('/settings', methods = ['GET', 'POST'])

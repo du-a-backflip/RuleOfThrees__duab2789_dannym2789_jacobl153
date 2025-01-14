@@ -26,7 +26,13 @@ def login():
 
 @app.route('/register', methods = ['GET', 'POST'])
 def register():
-    
+    if 'username' in session:
+        return redirect(url_for('home'))
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        password1 = request.form['password1']
+        if 
     return render_template("register.html")
 
 @app.route('/settings', methods = ['GET', 'POST'])

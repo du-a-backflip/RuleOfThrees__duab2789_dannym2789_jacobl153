@@ -56,19 +56,20 @@ def get_rand_word():
         print('Database Error')
 
 def addUser(username, password):
-    db = sqlite3.connect(DB_FILE)
+    db = sqlite3.connect('user_info.db')
     c = db.cursor()
-    query = "INSERT INTO users (username, password) VALUES (?, ?)"
-    c.execute(query, (username, password))
+    query = "INSERT INTO users (username, password, favorites) VALUES (?, ?, ?)"
+    c.execute(query, (username, password, ""))
     db.commit()
     db.close()
 
-def userExists(username, password):
+def findUser(username, password):
     db = sqlite3.connect('user_info.db')
     c = db.cursor()
     c.execute("SELECT * FROM users WHERE username = ?", (username, ))
     user = c.fetchone()
     if user is not None:
+        print(user)
         return password == user[1]
     return False
 
@@ -81,4 +82,3 @@ def registerUser(username, password):
         addUser(username, password)
         return True
     return False
-        

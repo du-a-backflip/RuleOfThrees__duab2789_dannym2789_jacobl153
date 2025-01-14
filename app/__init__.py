@@ -40,7 +40,9 @@ def register():
 
 @app.route('/settings', methods = ['GET', 'POST'])
 def settings():
-    return render_template("settings.html")
+    if 'username' in session:
+        return render_template('settings.html')
+    return render_template("login.html")
 
 @app.route('/search/<query>', methods = ['GET', 'POST'])
 def search(query):
@@ -48,7 +50,12 @@ def search(query):
 
 @app.route('/view', methods = ['GET', 'POST'])
 def view():
-    return render_template("view.html")
+    return render_template("reaction.html")
+
+@app.route('/logout', methods = ['GET', 'POST'])
+def logout():
+    session.pop('username', None)
+    return redirect(url_for('home'))
 
 if __name__ == "__main__":
     app.debug = True

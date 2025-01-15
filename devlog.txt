@@ -42,3 +42,6 @@ dannyM -- 2025-01-14 10:57
 
 jacobL -- 2025-01-15 3:00
 * Finished Word Guessing Game
+
+dannyM -- 2025-01-15 5:22
+* Functional Word Typing Game

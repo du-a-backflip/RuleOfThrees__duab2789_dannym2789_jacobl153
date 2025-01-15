@@ -48,14 +48,33 @@ def settings():
 def search(query):
     return render_template("")
 
-@app.route('/view', methods = ['GET', 'POST'])
-def view():
-    return render_template("reaction.html")
-
 @app.route('/logout', methods = ['GET', 'POST'])
 def logout():
     session.pop('username', None)
     return redirect(url_for('home'))
+@app.route('/memory_match', methods = ['GET', 'POST'])
+def memory_match():
+    return render_template("mem_match.html")
+
+
+@app.route('/typing_test', methods = ['GET', 'POST'])
+def typing_test():
+    return render_template("typ_test.html")
+
+
+@app.route('/word_guesser', methods = ['GET', 'POST'])
+def word_guesser():
+    text = DBModule.get_rand_word()[0]
+    all_info = text.split("+")
+    word = all_info[0]
+    definition = all_info[1]
+    syn_list = all_info[2].split(", ")
+    return render_template("word_guess.html", word = word, definition = definition, syn_list = syn_list)
+
+@app.route('/reaction', methods =['GET', 'POST'])
+def reaction_speed():
+    return render_template('reaction.html')
+
 
 if __name__ == "__main__":
     app.debug = True

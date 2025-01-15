@@ -32,6 +32,10 @@ duaB -- 2025-01-13 10:56
 
 dannyM -- 2025-01-13 18:02
 * Added static folder with css and js subfolders
+* Created reaction game
 
 duaB -- 2025-01-14 3:22
 * Added methods to register and add users to database
+
+dannyM -- 2025-01-14 10:57
+* Polished reaction game

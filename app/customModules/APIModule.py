@@ -5,7 +5,7 @@
 # 2024-01-10
 
 # import requests
-import json, random, urllib.request, requests
+import json, random, urllib.request#, requests
 from urllib.request import Request, urlopen
 
 def getDict():

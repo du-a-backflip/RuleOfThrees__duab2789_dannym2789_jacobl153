@@ -14,6 +14,7 @@ var time = 0;
 function render(){
     typetext.innerHTML = "";
     txtstore.split('').forEach(chr => {
+        typetext.appendChild(document.createElement('span'));
         var chrSpan = document.createElement('span');
         chrSpan.innerText = chr;
         typetext.appendChild(chrSpan);

@@ -39,3 +39,9 @@ duaB -- 2025-01-14 3:22
 
 dannyM -- 2025-01-14 10:57
 * Polished reaction game
+
+jacobL -- 2025-01-15 3:00
+* Finished Word Guessing Game
+
+dannyM -- 2025-01-15 5:22
+* Functional Word Typing Game

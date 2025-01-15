@@ -2,15 +2,53 @@
     padding: 1rem;
     background: #0096FF;
     color: aliceblue;
+    width: 100%;
+    margin-left: -1rem;
+}
+
+#interact-txt{
     margin-left: 1rem;
     margin-right: 1rem;
+    text-align: center;
 }
 
 #typetext {
-    background-color: lightblue;
-    color:rgb(29, 41, 41);
-    width:1000px;
+    text-align: justify;
+    font-size: 1.5rem;
+    background-color: rgb(160, 207, 221);
+    color: rgb(29, 41, 41);
+    width: 90%;
     max-width: 90%;
     border-radius: 1rem;
+    min-height: 8rem;
+    height: auto;
     padding: 1rem;
+    margin: auto;
+}
+
+#typetext:hover {
+    background-color: rgb(193, 218, 228);
+}
+
+#typetext-active {
+    text-align: justify;
+    font-size: 1.5rem;
+    background-color: rgb(193, 218, 228);
+    color: rgb(29, 41, 41);
+    width: 90%;
+    max-width: 90%;
+    border-radius: 1rem;
+    min-height: 8rem;
+    height: auto;
+    padding: 1rem;
+    margin: auto;
+}
+
+.correct {
+    background-color: rgb(76, 224, 121);
+}
+
+.error {
+    background-color: rgb(236, 53, 53);
+    text-decoration: underline;
 }

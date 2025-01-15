@@ -5,7 +5,7 @@
 # 2024-01-10
 
 # import requests
-import json, random, urllib.request
+import json, random, urllib.request, requests
 from urllib.request import Request, urlopen
 
 def getDict():
@@ -27,3 +27,19 @@ def getDict():
         return(dictionary)
     except Exception as e:
         print(e)
+
+def getQuote():
+    try:
+        file = open('../keys/quotesAPI.txt', 'r')
+        content = file.read().strip()
+        file.close()
+        url = f'https://api.api-ninjas.com/v1/quotes/'
+        response = requests.get(url, headers={'X-Api-Key': content})
+        i = 12
+        while response.text[i]!= "\"":
+            i += 1
+        return(response.text[11:i+1])
+    except Exception as e:
+        print(e)
+
+getQuote()

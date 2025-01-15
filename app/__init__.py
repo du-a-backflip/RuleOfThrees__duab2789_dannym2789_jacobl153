@@ -20,12 +20,17 @@ def login():
         username = request.form['username']
         password = request.form['password']
         if DBModule.findUser(username, password):
+            wrongInformation = False
             session['username'] = username
             return redirect(url_for('home'))
-    return render_template("login.html")
+        else: 
+            wrongInformation = True
+    return render_template("login.html", wrongInfo = wrongInformation)
 
 @app.route('/register', methods = ['GET', 'POST'])
 def register():
+    userExist = False
+    passwordMatch = True
     if 'username' in session:
         return redirect(url_for('home'))
     if request.method == 'POST':
@@ -36,7 +41,11 @@ def register():
             if DBModule.registerUser(username, password):
                 session ['username'] = username
                 return redirect(url_for('home'))
-    return render_template("register.html")
+            else: 
+                userExist = True
+        else: 
+            passwordMatch = False
+    return render_template("register.html", passwordMatch = passwordMatch, )
 
 @app.route('/settings', methods = ['GET', 'POST'])
 def settings():

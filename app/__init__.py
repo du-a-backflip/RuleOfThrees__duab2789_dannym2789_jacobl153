@@ -53,7 +53,7 @@ def memory_match():
 
 @app.route('/typing_test', methods = ['GET', 'POST'])
 def typing_test():
-    return render_template("typ_test.html")
+    return render_template("type_test.html")
 
 
 @app.route('/word_guesser', methods = ['GET', 'POST'])

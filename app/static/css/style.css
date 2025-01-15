@@ -1,5 +1,16 @@
 #interact {
-    padding: 4px;
+    padding: 1rem;
     background: #0096FF;
-    cursor: pointer;
+    color: aliceblue;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+#typetext {
+    background-color: lightblue;
+    color:rgb(29, 41, 41);
+    width:1000px;
+    max-width: 90%;
+    border-radius: 1rem;
+    padding: 1rem;
 }

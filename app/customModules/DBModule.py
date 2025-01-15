@@ -6,30 +6,30 @@ import random
 app = Flask(__name__)
 app.secret_key = os.urandom(32)
 
+################### make Database #############################
 def init_db():
-    """Initializes db"""
-    if not os.path.exists('../user_info.db'):
-        conn = sqlite3.connect('../user_info.db')
-        c = conn.cursor()
-        c.execute('''
+    conn = sqlite3.connect('../user_info.db') #initializes DB and creates users info table
+    c = conn.cursor()
+    c.execute('''
             CREATE TABLE IF NOT EXISTS users (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                username TEXT UNIQUE NOT NULL,
-                password TEXT NOT NULL,
-                favorites TEXT NOT NULL)''')
-        conn.commit()
-        conn.close()
-    if not os.path.exists('../api_info.db'):
-        conn = sqlite3.connect('../api_info.db')
-        c = conn.cursor()
-        c.execute('''
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            username TEXT UNIQUE NOT NULL,
+            password TEXT NOT NULL,
+            favorites TEXT NOT NULL)
+            ''')
+    conn.commit()
+    conn.close()
+
+    conn = sqlite3.connect('../api_info.db') #initializes DB for APIs
+    c = conn.cursor()
+    c.execute('''
             CREATE TABLE IF NOT EXISTS game_info(
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                GameName TEXT NOT NULL,
-                text TEXT NOT NULL
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            GameName TEXT NOT NULL,
+            text TEXT NOT NULL
                 )''')
-        conn.commit()
-        conn.close()
+    conn.commit()
+    conn.close()
 
 def setup_word_API():
     try:
@@ -56,24 +56,25 @@ def get_rand_word():
         print('Database Error')
 
 def addUser(username, password):
-    db = sqlite3.connect(DB_FILE)
+    db = sqlite3.connect('../user_info.db')
     c = db.cursor()
-    query = "INSERT INTO users (username, password) VALUES (?, ?)"
-    c.execute(query, (username, password))
+    query = "INSERT INTO users (username, password, favorites) VALUES (?, ?, ?)"
+    c.execute(query, (username, password, ""))
     db.commit()
     db.close()
 
-def userExists(username, password):
-    db = sqlite3.connect('user_info.db')
+def findUser(username, password):
+    db = sqlite3.connect('../user_info.db')
     c = db.cursor()
     c.execute("SELECT * FROM users WHERE username = ?", (username, ))
     user = c.fetchone()
+    print(user)
     if user is not None:
         return password == user[1]
     return False
 
 def registerUser(username, password):
-    db = sqlite3.connect('user_info.db')
+    db = sqlite3.connect('../user_info.db')
     c = db.cursor()
     c.execute("SELECT * FROM users WHERE username = ?", (username, ))
     user = c.fetchone()

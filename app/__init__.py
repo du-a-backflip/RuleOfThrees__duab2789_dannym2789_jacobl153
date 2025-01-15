@@ -13,7 +13,7 @@ def home():
     return render_template("home.html")
 
 @app.route('/login', methods = ['GET', 'POST'])
-def login():
+def login(): #note to self, add flash messages in this
     if 'username' in session:
         return redirect(url_for('home'))
     if request.method == 'POST':
@@ -23,7 +23,7 @@ def login():
             wrongInformation = False
             session['username'] = username
             return redirect(url_for('home'))
-        else: 
+        else:
             wrongInformation = True
     return render_template("login.html", wrongInfo = wrongInformation)
 
@@ -41,11 +41,11 @@ def register():
             if DBModule.registerUser(username, password):
                 session ['username'] = username
                 return redirect(url_for('home'))
-            else: 
+            else:
                 userExist = True
-        else: 
+        else:
             passwordMatch = False
-    return render_template("register.html", passwordMatch = passwordMatch, )
+    return render_template("register.html")
 
 @app.route('/settings', methods = ['GET', 'POST'])
 def settings():
@@ -61,6 +61,7 @@ def search(query):
 def logout():
     session.pop('username', None)
     return redirect(url_for('home'))
+
 @app.route('/memory_match', methods = ['GET', 'POST'])
 def memory_match():
     return render_template("mem_match.html")
@@ -82,7 +83,7 @@ def word_guesser():
     if request.method == 'POST':
         points = DBModule.check_guess()
     return render_template("word_guess.html", word = word, definition = definition, syn_list = syn_list, points = points, gameName = "Word Guesser")
-   
+
 
 @app.route('/reaction', methods =['GET', 'POST'])
 def reaction_speed():

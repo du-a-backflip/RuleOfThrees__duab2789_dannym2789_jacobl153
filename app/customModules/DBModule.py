@@ -33,7 +33,7 @@ def init_db():
 
 def setup_word_API():
     try:
-        with sqlite3.connect('api_info.db') as conn:
+        with sqlite3.connect('../api_info.db') as conn:
             dictionary = APIModule.getDict()
             c=conn.cursor()
             for i in dictionary:
@@ -47,7 +47,7 @@ def setup_word_API():
 
 def get_rand_word():
     try:
-        with sqlite3.connect('api_info.db') as conn:
+        with sqlite3.connect('../api_info.db') as conn:
             c = conn.cursor()
             rand = random.randint(1, 97)
             result = c.execute("SELECT text FROM game_info WHERE (id, GameName) = (?, ?)", (rand, "def_game")).fetchone()

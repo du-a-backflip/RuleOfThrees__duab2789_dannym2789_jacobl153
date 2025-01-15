@@ -4,18 +4,18 @@
 # P02
 # 2024-01-10
 
-# import requests
-import json, random, urllib.request#, requests
+import json, random, urllib.request, requests
 from urllib.request import Request, urlopen
 
 def getDict():
     try:
-        file = open('../keys/wordAPI.txt', 'r')
+        file = open('keys/wordAPI.txt', 'r')
         content = file.read().strip()
         word = "flood"
         file.close()
         dictionary = []
-        with open('words.txt', 'r') as file:
+        with open('customModules/words.txt', 'r') as file:
+            print(1)
             for line in file:
                 word = line.strip()
                 url = f"https://www.dictionaryapi.com/api/v3/references/thesaurus/json/{word}?key={content}"
@@ -30,7 +30,7 @@ def getDict():
 
 def getQuote():
     try:
-        file = open('../keys/quotesAPI.txt', 'r')
+        file = open('keys/quotesAPI.txt', 'r')
         content = file.read().strip()
         file.close()
         url = f'https://api.api-ninjas.com/v1/quotes/'

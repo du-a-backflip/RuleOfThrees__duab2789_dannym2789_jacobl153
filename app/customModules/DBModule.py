@@ -7,33 +7,9 @@ app = Flask(__name__)
 app.secret_key = os.urandom(32)
 
 ################### make Database #############################
-def init_db():
-    conn = sqlite3.connect('../user_info.db') #initializes DB and creates users info table
-    c = conn.cursor()
-    c.execute('''
-            CREATE TABLE IF NOT EXISTS users (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            username TEXT UNIQUE NOT NULL,
-            password TEXT NOT NULL,
-            favorites TEXT NOT NULL)
-            ''')
-    conn.commit()
-    conn.close()
-
-    conn = sqlite3.connect('../api_info.db') #initializes DB for APIs
-    c = conn.cursor()
-    c.execute('''
-            CREATE TABLE IF NOT EXISTS game_info(
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            GameName TEXT NOT NULL,
-            text TEXT NOT NULL
-                )''')
-    conn.commit()
-    conn.close()
-
 def setup_word_API():
     try:
-        with sqlite3.connect('../api_info.db') as conn:
+        with sqlite3.connect('api_info.db') as conn:
             dictionary = APIModule.getDict()
             c=conn.cursor()
             for i in dictionary:
@@ -45,9 +21,34 @@ def setup_word_API():
     except sqlite3.IntegrityError:
         flash('Database Error')
 
+def init_db():
+    conn = sqlite3.connect('user_info.db') #initializes DB and creates users info table
+    c = conn.cursor()
+    c.execute('''
+            CREATE TABLE IF NOT EXISTS users (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            username TEXT UNIQUE NOT NULL,
+            password TEXT NOT NULL,
+            favorites TEXT NOT NULL)
+            ''')
+    conn.commit()
+    conn.close()
+
+    conn = sqlite3.connect('api_info.db') #initializes DB for APIs
+    c = conn.cursor()
+    c.execute('''
+            CREATE TABLE IF NOT EXISTS game_info(
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            GameName TEXT NOT NULL,
+            text TEXT NOT NULL
+                )''')
+    conn.commit()
+    conn.close()
+    setup_word_API()
+
 def get_rand_word():
     try:
-        with sqlite3.connect('../api_info.db') as conn:
+        with sqlite3.connect('api_info.db') as conn:
             c = conn.cursor()
             rand = random.randint(1, 97)
             result = c.execute("SELECT text FROM game_info WHERE (id, GameName) = (?, ?)", (rand, "def_game")).fetchone()
@@ -56,7 +57,7 @@ def get_rand_word():
         print('Database Error')
 
 def addUser(username, password):
-    db = sqlite3.connect('../user_info.db')
+    db = sqlite3.connect('user_info.db')
     c = db.cursor()
     query = "INSERT INTO users (username, password, favorites) VALUES (?, ?, ?)"
     c.execute(query, (username, password, ""))
@@ -64,7 +65,7 @@ def addUser(username, password):
     db.close()
 
 def findUser(username, password):
-    db = sqlite3.connect('../user_info.db')
+    db = sqlite3.connect('user_info.db')
     c = db.cursor()
     c.execute("SELECT * FROM users WHERE username = ?", (username, ))
     user = c.fetchone()
@@ -75,7 +76,7 @@ def findUser(username, password):
     return False
 
 def registerUser(username, password):
-    db = sqlite3.connect('../user_info.db')
+    db = sqlite3.connect('user_info.db')
     c = db.cursor()
     c.execute("SELECT * FROM users WHERE username = ?", (username, ))
     user = c.fetchone()

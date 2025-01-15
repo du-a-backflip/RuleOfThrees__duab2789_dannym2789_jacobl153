@@ -20,12 +20,17 @@ def login():
         username = request.form['username']
         password = request.form['password']
         if DBModule.findUser(username, password):
+            wrongInformation = False
             session['username'] = username
             return redirect(url_for('home'))
-    return render_template("login.html")
+        else: 
+            wrongInformation = True
+    return render_template("login.html", wrongInfo = wrongInformation)
 
 @app.route('/register', methods = ['GET', 'POST'])
 def register():
+    userExist = False
+    passwordMatch = True
     if 'username' in session:
         return redirect(url_for('home'))
     if request.method == 'POST':
@@ -36,7 +41,11 @@ def register():
             if DBModule.registerUser(username, password):
                 session ['username'] = username
                 return redirect(url_for('home'))
-    return render_template("register.html")
+            else: 
+                userExist = True
+        else: 
+            passwordMatch = False
+    return render_template("register.html", passwordMatch = passwordMatch, )
 
 @app.route('/settings', methods = ['GET', 'POST'])
 def settings():
@@ -59,17 +68,21 @@ def memory_match():
 
 @app.route('/typing_test', methods = ['GET', 'POST'])
 def typing_test():
-    return render_template("typ_test.html")
+    return render_template("type_test.html")
 
 
 @app.route('/word_guesser', methods = ['GET', 'POST'])
 def word_guesser():
+    points = 0
     text = DBModule.get_rand_word()[0]
     all_info = text.split("+")
     word = all_info[0]
     definition = all_info[1]
     syn_list = all_info[2].split(", ")
-    return render_template("word_guess.html", word = word, definition = definition, syn_list = syn_list)
+    if request.method == 'POST':
+        points = DBModule.check_guess()
+    return render_template("word_guess.html", word = word, definition = definition, syn_list = syn_list, points = points, gameName = "Word Guesser")
+   
 
 @app.route('/reaction', methods =['GET', 'POST'])
 def reaction_speed():

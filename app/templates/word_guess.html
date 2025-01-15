@@ -3,17 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">>
+    <a href = "{{url_for('home')}}" style="text-decoration: none;"> Home </a>
+    <br>
     <title>Word Guesser</title>
 </head>
 <body>
     <h1>{{gameName}}</h1>
-    <p> GAME DESC <p>
+    <p> Read the Definition Below and Guess the Word Corresponding to it.
+        (Scoring: Correct = 3pts, Synonym = 1pt, Neither = 0pts) <p>
     <ul>
         <div id="individual">
         <li>
             <a id="definition"> {{ definition }} </a> <br> <!-- Link and Title-->
-            <p id="word">{{ word }}</p><br> <!-- Content -->
+            <form action="/word_guesser" method="POST">
+                <!-- Hidden fields to pass the word and synonyms -->
+                <input type="hidden" name="word_to_guess" value="{{ word }}">
+                <input type="hidden" name="syn_list" value="{{ syn_list | join(', ') }}">
+                <input type="hidden" name="point_tracker" value="{{points}}">
+                <input type="text" name="word" placeholder="Word"><br><br>
+                <input type="submit" class="button" id="guess" name="guess" value="Guess">
+            </form>
+
             <p id="syn_list">{{ syn_list}} </p><br>
+            <p id="points">Points: {{points}}</p><br>
         </li>
             <br>
         </div>

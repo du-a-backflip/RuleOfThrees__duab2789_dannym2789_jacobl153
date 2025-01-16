@@ -23,6 +23,16 @@
 
     <div class="guesser-sec">
         <h1 class="guesser-header">{{gameName}}</h1>
+        {% for category, message in get_flashed_messages(with_categories=true) %}
+        {% if category == "error" %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endif %}
+    {% endfor %}
         <p> Read the Definition Below and Guess the Word Corresponding to it.
             (Scoring: Correct = 3pts, Synonym = 1pt, Neither = 0pts) <p>
         <ul class="word-list">
@@ -33,13 +43,19 @@
                     <!-- Hidden fields to pass the word and synonyms -->
                     <input type="hidden" name="word_to_guess" value="{{ word }}">
                     <input type="hidden" name="syn_list" value="{{ syn_list | join(', ') }}">
-                    <input type="hidden" name="point_tracker" value="{{points}}">
+                    <input type="hidden" name="lives" value="{{lives}}">
+                    <input type="hidden" name="turns" value="{{turns}}">
                     <input class="word-input" type="text" name="word" placeholder="Word"><br><br>
                     <input type="submit" class="word-button" id="guess" name="guess" value="Guess">
                 </form>
 
-                <p id="syn_list">{{ syn_list}} </p><br>
-                <p id="points">Points: {{points}}</p><br>
+                <p id="lives">Lives:
+                    <div id="lives-images">
+                    {% for i in range(lives) %}
+                        <img src="https://pnghq.com/wp-content/uploads/minecraft-heart-png-transparent-20559.png" width =50 height = 50 alt="Life" class="life-image">
+                    {% endfor %}
+                </div></p>
+                <p id="turns">Turns: {{turns}}</p>
             </li>
                 <br>
             </div>

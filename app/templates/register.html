@@ -8,16 +8,23 @@
     <title>Register</title>
 </head>
 <body>
-    <h1>Register</h1>
-    <form action = "/register" method="POST">
-        <input type="text" name="username" placeholder="Username" autocomplete="off" required>
-        <input type="password" name="password" placeholder="Password" autocomplete="off" required>
-        <input type="password" name="password1" placeholder="Confirm Password" autocomplete="off" required>
-        <input type="submit" value="Register">
+    <!-- navbar -->
+    <div class="navbar">
+        <ul class="nav">
+            <li class="nav-object"><a class="nav-link" href="{{url_for('home')}}">Home</a></li>
+            <li class="nav-object"><a class="nav-link" href="{{url_for('settings')}}">Settings</a></li>
+            <li class="nav-object"><a class="nav-link" a href = "{{url_for('login')}}"> Login </a></li>
+            <li class="nav-object"><a class="nav-link" a href = "{{url_for('register')}}"> Sign Up </a></li>
+        </ul>
+    </div>
+        
+    <form class="register-form" action = "/register" method="POST">
+        <h1 class="reg-header">Register</h1>
+        <input class="reg-input" type="text" name="username" placeholder="Username" autocomplete="off" required>
+        <input class="reg-input" type="password" name="password" placeholder="Password" autocomplete="off" required>
+        <input class="reg-input" type="password" name="password1" placeholder="Confirm Password" autocomplete="off" required>
+        <input class="reg-button" type="submit" value="Register">
     </form>
-    <br>
-    <a href = "{{url_for('login')}}" style="text-decoration: none;"> Login </a>
-    <br>
-    <a href = "{{url_for('home')}}" style="text-decoration: none;"> Return Home </a>
+
 </body>
 </html>

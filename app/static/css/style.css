@@ -87,6 +87,62 @@ htnl, body {
     background-color:#dce9f1;
 }
 
+/* register */
+.register-form {
+    position: fixed;
+    margin: auto;
+    inset: 0px;
+    background-color: white;
+    padding: 50px;
+    border-radius: 4px;
+    max-width: 500px;
+    max-height: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.reg-input {
+    margin: 5px;
+    font-size: 18px;
+    border-radius: 2px;
+    border: 1px solid;
+}
+
+.reg-button {
+    margin-top: 20px;
+    padding-right: 45px;
+    padding-left: 45px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 2px;
+    border: none;
+    background-color: #0096FF;
+    color: white;
+    font-size: 18px;
+    transition: background-color 0.5s ease-out;
+}
+
+.reg-button:hover {
+    background-color: #54b0f1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

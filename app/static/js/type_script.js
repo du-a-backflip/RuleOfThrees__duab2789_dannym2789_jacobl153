@@ -21,6 +21,7 @@ var errorcount = 0;
 var totalcount = 0;
 var blinkcount = 0;
 var time = 0;
+var quotetxt = "";
 
 function render(){
     typetext.innerHTML = "";
@@ -111,8 +112,8 @@ document.addEventListener("keydown", function(event){
             errorcount++;
             errorstate = false;
         }
-        //console.clear();
-        //console.log("total: " + totalcount + "\nerror: " + errorcount);
+        console.clear();
+        console.log("total: " + totalcount + "\nerror: " + errorcount);
     }
 });
 
@@ -129,7 +130,8 @@ function timefxn(){
 
 again.addEventListener("click", function(){
     if (winstate){
-        typetext.innerText = getQuote();
+        getQuote()
+        typetext.innerText = quotetxt;
         txtstore = typetext.innerText;
         WPM.innerText = "Typing Test";
         timer.innerText = "The timer starts when you start typing!";
@@ -184,7 +186,7 @@ function gameloop(){
     }, 50);
 }
 
-function getQuote(){
+async function getQuote(){
     var key = document.getElementById("apikey");
     //console.log(key);
     let param = {
@@ -194,15 +196,10 @@ function getQuote(){
 
     let link = 'https://api.api-ninjas.com/v1/quotes';
 
-    fetch(link, param)
-        .then(res => {
-            return res.json().then(data => {
-                console.log(data[0].quote);
-                return data[0].quote;
-            }).catch(err => {
-                console.log(err);
-            })
-        })
+    var response = await fetch(link, param);
+    quotetxt = await response.json();
+    quotetxt = quotetxt[0].quote;
+    //console.log(quotetxt);
 }
 
 gameloop();

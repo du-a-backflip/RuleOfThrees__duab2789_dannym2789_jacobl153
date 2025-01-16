@@ -5,7 +5,7 @@
 # 2024-01-10
 
 import json, random, urllib.request, requests
-from urllib.request import Request, urlopen
+from urllib import request, parse
 
 def getDict():
     try:
@@ -42,4 +42,34 @@ def getQuote():
     except Exception as e:
         print(e)
 
-getQuote()
+def getGif():
+    try:
+        file = open('keys/giphyAPI.txt', 'r')
+        content = file.read().strip()
+        file.close()
+        url = f'http://api.giphy.com/v1/gifs/search'
+
+        params = parse.urlencode({
+        "q": "win",
+        "api_key": content,
+        "limit": "1"
+        })
+
+        with request.urlopen("".join((url, "?", params))) as response:
+            data = json.loads(response.read())
+
+        all_info=json.dumps(data, sort_keys=True, indent=2)
+        i = 0
+        while all_info[i:i+8]!= "original":
+            i += 1
+        j =i
+        while all_info[j: j+5] != ".gif\"":
+            if all_info[j: j +3] == "url":
+                k = j+6
+            j += 1
+        return(all_info[k: j+5])
+
+    except Exception as e:
+        print(e)
+
+getGif()

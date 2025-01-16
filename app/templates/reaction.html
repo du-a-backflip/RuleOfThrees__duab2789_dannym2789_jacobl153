@@ -2,20 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reaction Game</title>
     <link rel="stylesheet" href="../static/css/style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
     <script src="../static/js/reaction_script.js" defer></script>
 </head>
 <body>
-    <div id="main">
-        <div id="desc">
-            <h1>{{gameName}}</h1>
-            <h2> Test your reaction time! </h2>
+    <!-- navbar -->
+    <div class="navbar">
+        <ul class="nav">
+            <li class="nav-object"><a class="nav-link" href="{{url_for('home')}}">Home</a></li>
+            <li class="nav-object"><a class="nav-link" href="{{url_for('settings')}}">Settings</a></li>
+            <li class="nav-object"><a class="nav-link" a href = "{{url_for('login')}}"> Login </a></li>
+            <li class="nav-object"><a class="nav-link" a href = "{{url_for('register')}}"> Sign Up </a></li>
+        </ul>
+    </div>
+
+        <div id="react-sec" style="cursor: pointer;">
+            <h1 class="react-header">Reaction Time Test</h1>
             <p> When the screen turns green, click as fast as you can! </p>
-        </div>
-        <div id="interact" style="cursor: pointer;">
             <div id="interact-txt">
                 <p id="gametext">CLICK HERE TO START</p>
             </div>
@@ -24,7 +30,6 @@
             <p> Score: <div id="scoretxt"></div><p>
             <p> High Score: <div id="topscore"></div><p>
         </div>
-    </div>
 
 </body>
 </html>

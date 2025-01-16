@@ -121,6 +121,7 @@ htnl, body {
     color: white;
     font-size: 18px;
     transition: background-color 0.5s ease-out;
+    cursor: pointer;
 }
 
 .reg-button:hover {
@@ -130,7 +131,7 @@ htnl, body {
 /* typing test */
 #interact {
     color: white;
-    margin-top: -50px;
+    margin-top: -48px;
     margin-left: -10px;
     margin-right: -10px;
     background: #0096FF;
@@ -207,6 +208,10 @@ htnl, body {
     cursor: pointer;
 }
 
+#again:hover {
+    background-color: rgb(200, 221, 240);
+} 
+
 .correct {
     background-color: rgb(76, 224, 121);
 }
@@ -241,4 +246,112 @@ htnl, body {
 
 .hide {
     display: none;
+}
+
+/* word guesser */
+.guesser-sec {
+    padding-top: 50px;
+    margin-top: -16px;
+    margin-left: -10px;
+    margin-right: -10px;
+    background: #0096FF;
+    color: white;
+    text-align: center;
+}
+
+.guesser-header {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.word-list {
+    list-style-type: none;
+}
+
+.word-input {
+    margin: 5px;
+    font-size: 18px;
+    border-radius: 2px;
+    border: 1px solid;
+}
+
+.word-button {
+    background: aliceblue;
+    color:#0096FF;
+    font-size: 1.5rem;
+    border-radius: 1rem;
+    border: none;
+    padding-right: 45px;
+    padding-left: 45px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: auto;
+    cursor: pointer;
+}
+
+.word-button:hover {
+    background-color: rgb(200, 221, 240);
+} 
+
+#points {
+    font-weight: bold;
+    font-size: 35px;
+}
+
+/* login */
+.login-form {
+    position: fixed;
+    margin: auto;
+    inset: 0px;
+    background-color: white;
+    padding: 50px;
+    border-radius: 4px;
+    max-width: 500px;
+    max-height: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-input {
+    margin: 5px;
+    font-size: 18px;
+    border-radius: 2px;
+    border: 1px solid;
+}
+
+.login-button {
+    margin-top: 20px;
+    padding-right: 45px;
+    padding-left: 45px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 2px;
+    border: none;
+    background-color: #0096FF;
+    color: white;
+    font-size: 18px;
+    transition: background-color 0.5s ease-out;
+    cursor: pointer;
+}
+
+.login-button:hover {
+    background-color: #54b0f1;
+}
+
+/* reaction time */
+.react-sec {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    margin-top: -16px;
+    margin-left: -10px;
+    margin-right: -10px;
+    background: #0096FF;
+    color: white;
+    text-align: center;
+}
+
+.react-header {
+    font-size: 3rem;
+    font-weight: bold;
 }

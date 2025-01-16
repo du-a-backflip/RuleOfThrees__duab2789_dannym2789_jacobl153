@@ -17,8 +17,12 @@
         <ul class="nav">
             <li class="nav-object"><a class="nav-link" href="{{url_for('home')}}">Home</a></li>
             <li class="nav-object"><a class="nav-link" href="{{url_for('settings')}}">Settings</a></li>
-            <li class="nav-object"><a class="nav-link" a href = "{{url_for('login')}}"> Login </a></li>
-            <li class="nav-object"><a class="nav-link" a href = "{{url_for('register')}}"> Sign Up </a></li>
+            {% if session['username'] %}
+              <li class="nav-object"><a class="nav-link" a href = "{{url_for('logout')}}"> Logout </a></li>
+            {% else %}
+              <li class="nav-object"><a class="nav-link" a href = "{{url_for('login')}}"> Login </a></li>
+              <li class="nav-object"><a class="nav-link" a href = "{{url_for('register')}}"> Sign Up </a></li>
+            {% endif %}
         </ul>
     </div>
     <!--alert-->
@@ -37,7 +41,7 @@
         <h1 class="header-text">BrainThreesers</h1>
         <p class="header-statement">Test your cognitive abilities</p>
     </div>
-    
+
     <!-- games -->
      <div class="games">
         <div class="game-button">

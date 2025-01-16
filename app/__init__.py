@@ -7,7 +7,6 @@ app = Flask(__name__)
 app.secret_key = os.urandom(32)
 
 DBModule.init_db()
-
 @app.route('/', methods = ['GET', 'POST'])
 def home():
     return render_template("home.html")
@@ -32,7 +31,7 @@ def login(): #note to self, add flash messages in this
             session['username'] = username
             flash(f"Successfully Logged in!", category="success")
             return redirect(url_for('home'))
-        else: 
+        else:
             flash(f"No account found with this username and password", category="error")
     return render_template("login.html")
 
@@ -60,7 +59,7 @@ def logout():
     session.pop('username', None)
     flash(f"Successfully logged out!", category="success")
     return redirect(url_for('home'))
-    
+
 @app.route('/settings', methods = ['GET', 'POST'])
 def settings():
     if 'username' in session:

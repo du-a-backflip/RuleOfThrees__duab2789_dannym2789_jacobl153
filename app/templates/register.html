@@ -17,8 +17,12 @@
         <ul class="nav">
             <li class="nav-object"><a class="nav-link" href="{{url_for('home')}}">Home</a></li>
             <li class="nav-object"><a class="nav-link" href="{{url_for('settings')}}">Settings</a></li>
-            <li class="nav-object"><a class="nav-link" a href = "{{url_for('login')}}"> Login </a></li>
-            <li class="nav-object"><a class="nav-link" a href = "{{url_for('register')}}"> Sign Up </a></li>
+            {% if session['username'] %}
+              <li class="nav-object"><a class="nav-link" a href = "{{url_for('logout')}}"> Logout </a></li>
+            {% else %}
+              <li class="nav-object"><a class="nav-link" a href = "{{url_for('login')}}"> Login </a></li>
+              <li class="nav-object"><a class="nav-link" a href = "{{url_for('register')}}"> Sign Up </a></li>
+            {% endif %}
         </ul>
     </div>
     {% for category, message in get_flashed_messages(with_categories=true) %}
@@ -30,7 +34,7 @@
             </button>
         </div>
         {% endif %}
-    {% endfor %}    
+    {% endfor %}
     <form class="register-form" action = "/register" method="POST">
         <h1 class="reg-header">Register</h1>
         <input class="reg-input" type="text" name="username" placeholder="Username" autocomplete="off" required>

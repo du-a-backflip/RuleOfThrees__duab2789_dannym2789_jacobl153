@@ -130,7 +130,7 @@ function timefxn(){
 again.addEventListener("click", function(){
     if (winstate){
         txtstore = typetext.innerText;
-        WPM.innerText = "WPM DISPLAYED HERE";
+        WPM.innerText = "Typing Test";
         timer.innerText = "The timer starts when you start typing!";
         txtlen = txtstore.length;
         timeflow = false;

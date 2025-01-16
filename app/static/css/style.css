@@ -127,44 +127,24 @@ htnl, body {
     background-color: #54b0f1;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* typing test */
 #interact {
-    padding: 1rem;
+    color: white;
+    margin-top: -50px;
+    margin-left: -10px;
+    margin-right: -10px;
     background: #0096FF;
-    color: aliceblue;
-    width: 100%;
+    padding-bottom: 30px;
 }
 
 #interact-txt{
-    margin-left: 1rem;
-    margin-right: 1rem;
     text-align: center;
 }
 
 #typetext {
     text-align: justify;
     font-size: 1.5rem;
-    background-color: rgb(160, 207, 221);
+    background-color: #dce9f1;
     color: rgb(29, 41, 41);
     width: 90%;
     max-width: 90%;
@@ -194,11 +174,18 @@ htnl, body {
 }
 
 #livescore{
+    padding-top: 60px;
     font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: -0px;
 }
 
 #livescore-result{
     font-size: 5rem;
+}
+
+#type-caption {
+    font-size: 40px;
 }
 
 #timer{

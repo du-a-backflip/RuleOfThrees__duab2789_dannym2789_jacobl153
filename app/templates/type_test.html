@@ -2,33 +2,38 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Typing Game</title>
     <link rel="stylesheet" href="../static/css/style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
     <script src="../static/js/type_script.js" defer></script>
 </head>
 <body>
-    <div id="main">
-        <div id="desc">
-            <h1>{{gameName}}</h1>
-            <h2> Type as fast as you can! </h2>
-            <p> Click on the box and the timer will begin as soon as you start typing! </p>
-        </div>
-        <div id="interact">
-            <div id="interact-txt">
-                <p id="livescore"> WPM DISPLAYED HERE </p>
-                <p id="typetext">Lorem ipsum dolor sit</p>
-                <br>
-                <p id="timer"> The timer starts when you start typing! </p>
-                <p id="again-hide">Try again?</p>
-            </div>
-        </div>
-        <div id="score">
-            <p> Score: <div id="scoretxt"></div><p>
-            <p> High Score: <div id="topscore"></div><p>
+    <!-- navbar -->
+    <div class="navbar">
+        <ul class="nav">
+            <li class="nav-object"><a class="nav-link" href="{{url_for('home')}}">Home</a></li>
+            <li class="nav-object"><a class="nav-link" href="{{url_for('settings')}}">Settings</a></li>
+            <li class="nav-object"><a class="nav-link" a href = "{{url_for('login')}}"> Login </a></li>
+            <li class="nav-object"><a class="nav-link" a href = "{{url_for('register')}}"> Sign Up </a></li>
+        </ul>
+    </div>
+
+    <div id="interact">
+        <div id="interact-txt">
+            <p id="livescore"> Typing Test </p>
+            <p id="type-caption"> Click on the box and the timer will begin as soon as you start typing! </p>
+            <p id="typetext">Lorem ipsum dolor sit</p>
+            <br>
+            <p id="timer"> The timer starts when you start typing! </p>
+            <p id="again-hide">Try again?</p>
         </div>
     </div>
+    <div id="score">
+        <p> Score: <div id="scoretxt"></div><p>
+        <p> High Score: <div id="topscore"></div><p>
+    </div>
+
 
 </body>
 </html>

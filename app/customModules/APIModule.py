@@ -38,7 +38,7 @@ def getQuote():
         i = 12
         while response.text[i]!= "\"":
             i += 1
-        return(response.text[11:i+1])
+        return(response.text[12:i])
     except Exception as e:
         print(e)
 

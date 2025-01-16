@@ -297,3 +297,61 @@ htnl, body {
     font-weight: bold;
     font-size: 35px;
 }
+
+/* login */
+.login-form {
+    position: fixed;
+    margin: auto;
+    inset: 0px;
+    background-color: white;
+    padding: 50px;
+    border-radius: 4px;
+    max-width: 500px;
+    max-height: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-input {
+    margin: 5px;
+    font-size: 18px;
+    border-radius: 2px;
+    border: 1px solid;
+}
+
+.login-button {
+    margin-top: 20px;
+    padding-right: 45px;
+    padding-left: 45px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 2px;
+    border: none;
+    background-color: #0096FF;
+    color: white;
+    font-size: 18px;
+    transition: background-color 0.5s ease-out;
+    cursor: pointer;
+}
+
+.login-button:hover {
+    background-color: #54b0f1;
+}
+
+/* reaction time */
+.react-sec {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    margin-top: -16px;
+    margin-left: -10px;
+    margin-right: -10px;
+    background: #0096FF;
+    color: white;
+    text-align: center;
+}
+
+.react-header {
+    font-size: 3rem;
+    font-weight: bold;
+}

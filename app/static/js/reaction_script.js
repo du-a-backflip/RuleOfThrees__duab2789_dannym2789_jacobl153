@@ -1,4 +1,4 @@
-var interactable = document.getElementById("interact");
+var interactable = document.getElementById("react-sec");
 var scoretxt = document.getElementById("scoretxt");
 var text = document.getElementById("gametext");
 var hightxt = document.getElementById("topscore");

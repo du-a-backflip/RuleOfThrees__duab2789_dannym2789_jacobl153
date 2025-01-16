@@ -3,51 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>Home</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <title>BrainThreesers</title>
 </head>
 <body>
-    <h1>BrainThreesers - Home</h1>
-    <div class = "navbar">
-        <nav>
-            <ul>
-                <li><a href="{{url_for('home')}}">Home</a></li>
-                <li><a href="{{url_for('settings')}}">Settings</a></li>
-            </ul>
-        </nav>
+    <!-- navbar -->
+    <div class="navbar">
+        <ul class="nav">
+            <li class="nav-object"><a class="nav-link" href="{{url_for('home')}}">Home</a></li>
+            <li class="nav-object"><a class="nav-link" href="{{url_for('settings')}}">Settings</a></li>
+            <li class="nav-object"><a class="nav-link" a href = "{{url_for('login')}}"> Login </a></li>
+            <li class="nav-object"><a class="nav-link" a href = "{{url_for('register')}}"> Sign Up </a></li>
+        </ul>
     </div>
-    <br>
-    <div class = "container">
-        <h2>Games</h2>
-        <div class="row">
-            <div class="col">
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="https://th.bing.com/th/id/OIP.ySxEXQ89QN90k_2B3hy6oQHaHa?w=162&h=180&c=7&r=0&o=5&pid=1.7" alt="Card image cap">
-                    <div class="card-body">
-                      <p class="card-text"><a href="{{url_for('memory_match')}}">Memory Match</a></p>
-                    </div>
-                  </div>
-            </div>
-            <div class="col">
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="https://www.iconexperience.com/_img/v_collection_png/256x256/shadow/keyboard_key_a.png" alt="Card image cap">
-                    <div class="card-body">
-                      <p class="card-text"><a href="{{url_for('typing_test')}}">Typing Test</a></p>
-                    </div>
-                  </div>
-            </div>
-            <div class="col">
-                <a href="{{url_for('word_guesser')}}">Word Guesser</a>
-            </div>
-            <div class = "col">
-                <a href="{{url_for('reaction_speed')}}">Reaction Speed</a>
-            </div>
+
+    <!-- header -->
+    <div class="header">
+        <h1 class="header-text">BrainThreesers</h1>
+        <p class="header-statement">Test your cognitive abilities</p>
+    </div>
+    
+    <!-- games -->
+     <div class="games">
+        <div class="game-button">
+            <a class="game-link" href="{{url_for('typing_test')}}">Typing Test</a>
         </div>
-    </div>
-    <br>
-    <a href = "{{url_for('logout')}}" style="text-decoration: none;"> Logout </a>
-    <a href = "{{url_for('login')}}" style="text-decoration: none;"> Login </a>
-    <br>
-    <a href = "{{url_for('register')}}" style="text-decoration: none;"> Create Account </a>
+
+        <div class="game-button">
+            <a class="game-link" href="{{url_for('word_guesser')}}">Word Guesser</a>
+        </div>
+
+        <div class="game-button">
+            <a class="game-link" href="{{url_for('reaction_speed')}}">Reaction Speed</a>
+        </div>
+     </div>
+    <!-- <a href = "{{url_for('logout')}}" style="text-decoration: none;"> Logout </a> -->
 </body>
 </html>

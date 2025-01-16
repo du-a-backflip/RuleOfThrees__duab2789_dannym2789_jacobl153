@@ -1,3 +1,153 @@
+* {
+    font-family: "Poppins";
+}
+
+htnl, body {
+    background-color: #E8E8E8;
+}
+
+/* homepage */
+.nav {
+    background-color: white;
+    list-style-type: none;
+    margin-left: -10px;
+    margin-right: -10px;
+    margin-top: -10px;
+    overflow: hidden;
+}
+
+.nav-object {
+    float: left;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.nav-object:hover {
+    background-color: #E8E8E8;
+}
+
+.nav-link {
+    display: block;
+    color: black;
+    font-size: 20px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.header {
+    margin-top: -50px;
+    margin-left: -10px;
+    margin-right: -10px;
+    background: #0096FF;
+}
+
+.header-text {
+    color: white;
+    text-align: center;
+    font-size: 75px;
+    padding-top: 200px;
+}
+
+.header-statement {
+    color: white;
+    text-align: center;
+    font-size: 30px;
+    margin-top: -60px;
+    padding-bottom: 125px;
+}
+
+.games {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    gap: 50px;
+}
+
+.game-button {
+    border-radius: 4px;
+    transition: background-color 0.5s ease-out;
+    background-color: white;
+    width: 300px;
+    padding-top: 150px;
+    padding-bottom: 150px;
+}
+
+.game-link {
+    text-decoration: none;
+    color: black;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.game-button:hover {
+    background-color:#dce9f1;
+}
+
+/* register */
+.register-form {
+    position: fixed;
+    margin: auto;
+    inset: 0px;
+    background-color: white;
+    padding: 50px;
+    border-radius: 4px;
+    max-width: 500px;
+    max-height: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.reg-input {
+    margin: 5px;
+    font-size: 18px;
+    border-radius: 2px;
+    border: 1px solid;
+}
+
+.reg-button {
+    margin-top: 20px;
+    padding-right: 45px;
+    padding-left: 45px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 2px;
+    border: none;
+    background-color: #0096FF;
+    color: white;
+    font-size: 18px;
+    transition: background-color 0.5s ease-out;
+}
+
+.reg-button:hover {
+    background-color: #54b0f1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #interact {
     padding: 1rem;
     background: #0096FF;

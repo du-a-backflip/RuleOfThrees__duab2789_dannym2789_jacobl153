@@ -72,4 +72,13 @@ def getGif():
     except Exception as e:
         print(e)
 
+def getKey(fileinput):
+    try:
+        file = open(fileinput, 'r')
+        content = file.read().strip()
+        file.close()
+        return content
+    except Exception as e:
+        print(e)
+
 getGif()

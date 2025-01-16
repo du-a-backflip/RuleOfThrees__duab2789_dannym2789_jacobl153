@@ -122,13 +122,14 @@ function timefxn(){
     timeID = setInterval(function(){
         time = Math.abs(Math.floor((init - Date.now()) / 1000));
         timer.innerText = Math.floor(time/60) + ":" + Math.floor(time%60/10) + Math.floor(time%60 - Math.floor(time%60/10) * 10);
-        livescore.innerText = Math.max(0, Math.min(Math.floor(((totalcount/4) - errorcount) / (time/60)), 999));
+        livescore.innerText = Math.max(0, Math.min(Math.floor(((totalcount/5) - errorcount) / (time/60)), 999));
     }, 100);
     timeflow = true;
 }
 
 again.addEventListener("click", function(){
     if (winstate){
+        typetext.innerText = getQuote();
         txtstore = typetext.innerText;
         WPM.innerText = "Typing Test";
         timer.innerText = "The timer starts when you start typing!";
@@ -181,6 +182,27 @@ function gameloop(){
             //console.log("heheheheheheheheh done");
         }
     }, 50);
+}
+
+function getQuote(){
+    var key = document.getElementById("apikey");
+    //console.log(key);
+    let param = {
+        method: 'GET',
+        headers: { 'x-api-key':  key.innerText}
+    };
+
+    let link = 'https://api.api-ninjas.com/v1/quotes';
+
+    fetch(link, param)
+        .then(res => {
+            return res.json().then(data => {
+                console.log(data[0].quote);
+                return data[0].quote;
+            }).catch(err => {
+                console.log(err);
+            })
+        })
 }
 
 gameloop();

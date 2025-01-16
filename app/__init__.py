@@ -7,14 +7,6 @@ app = Flask(__name__)
 app.secret_key = os.urandom(32)
 
 DBModule.init_db()
-@app.route('/', methods = ['GET', 'POST'])
-def home():
-    return render_template("home.html")
-
-app = Flask(__name__)
-app.secret_key = os.urandom(32)
-
-DBModule.init_db()
 
 @app.route('/', methods = ['GET', 'POST'])
 def home():
@@ -78,8 +70,9 @@ def memory_match():
 @app.route('/typing_test', methods = ['GET', 'POST'])
 def typing_test():
     quote = APIModule.getQuote()
+    key = APIModule.getKey("keys/quotesAPI.txt")
     print(2)
-    return render_template("type_test.html", quote = quote)
+    return render_template("type_test.html", quote = quote, key=key)
 
 
 @app.route('/word_guesser', methods = ['GET', 'POST'])

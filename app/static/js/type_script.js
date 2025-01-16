@@ -97,15 +97,20 @@ document.addEventListener("keydown", function(event){
             if (chr == chrSpan.innerText){
                 chrSpan.classList.add('correct');
                 chrSpan.classList.remove('error');
+                chrSpan.classList.remove('blank');
             }
             else if (chr == null){
                 chrSpan.classList.remove('correct');
                 chrSpan.classList.remove('error');
+                chrSpan.classList.add('blank');
             }
             else {
+                if (chrSpan.classList.contains('blank')){
+                    errorstate = true;
+                }
                 chrSpan.classList.remove('correct');
                 chrSpan.classList.add('error');
-                errorstate = true;
+                chrSpan.classList.remove('blank');
             }
         })
         if (errorstate){
@@ -123,7 +128,7 @@ function timefxn(){
     timeID = setInterval(function(){
         time = Math.abs(Math.floor((init - Date.now()) / 1000));
         timer.innerText = Math.floor(time/60) + ":" + Math.floor(time%60/10) + Math.floor(time%60 - Math.floor(time%60/10) * 10);
-        livescore.innerText = Math.max(0, Math.min(Math.floor(((totalcount/5) - errorcount) / (time/60)), 999));
+        livescore.innerText = Math.max(0, Math.min(Math.floor(((totalcount/5) - errorcount/5) / (time/60)), 999));
     }, 100);
     timeflow = true;
 }
@@ -135,6 +140,7 @@ again.addEventListener("click", function(){
         txtstore = typetext.innerText;
         WPM.innerText = "Typing Test";
         timer.innerText = "The timer starts when you start typing!";
+        scoretxt.innerHTML = ""
         txtlen = txtstore.length;
         timeflow = false;
         rendered = false;
@@ -149,6 +155,7 @@ again.addEventListener("click", function(){
         totalcount = 0;
         blinkcount = 0;
         time = 0;
+        score = 0;
 
         typetext.classList.remove("hide");
         timer.classList.remove("hide");
@@ -176,10 +183,15 @@ function gameloop(){
             again.id = "again";
             
             score = parseInt(WPM.innerText);
-            scoretxt.innerHTML = score + " WPM";
-            if (score > highscore || highscoretxt.innerHTML == ""){
+            if (!Number.isNaN(score)) {
+                scoretxt.innerHTML = score + " WPM";
+            }
+            else{
+                scoretxt.innerHTML = "";
+            }
+            if (score > highscore){
+                highscore = score;
                 highscoretxt.innerText = score + " WPM";
-                initial = true;
             }
             //console.log("heheheheheheheheh done");
         }

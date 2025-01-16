@@ -2,34 +2,44 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/css/style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
     <title>Word Guesser</title>
 </head>
 <body>
-    <h1>{{gameName}}</h1>
-    <a href = "{{url_for('home')}}" style="text-decoration: none;"> Home </a>
-    <p> Read the Definition Below and Guess the Word Corresponding to it.
-        (Scoring: Correct = 3pts, Synonym = 1pt, Neither = 0pts) <p>
-    <ul>
-        <div id="individual">
-        <li>
-            <a id="definition"> {{ definition }} </a> <br> <!-- Link and Title-->
-            <form action="/word_guesser" method="POST">
-                <!-- Hidden fields to pass the word and synonyms -->
-                <input type="hidden" name="word_to_guess" value="{{ word }}">
-                <input type="hidden" name="syn_list" value="{{ syn_list | join(', ') }}">
-                <input type="hidden" name="point_tracker" value="{{points}}">
-                <input type="text" name="word" placeholder="Word"><br><br>
-                <input type="submit" class="button" id="guess" name="guess" value="Guess">
-            </form>
+    <div class="navbar">
+        <ul class="nav">
+            <li class="nav-object"><a class="nav-link" href="{{url_for('home')}}">Home</a></li>
+            <li class="nav-object"><a class="nav-link" href="{{url_for('settings')}}">Settings</a></li>
+            <li class="nav-object"><a class="nav-link" a href = "{{url_for('login')}}"> Login </a></li>
+            <li class="nav-object"><a class="nav-link" a href = "{{url_for('register')}}"> Sign Up </a></li>
+        </ul>
+    </div>
 
-            <p id="syn_list">{{ syn_list}} </p><br>
-            <p id="points">Points: {{points}}</p><br>
-        </li>
-            <br>
-        </div>
-    </ul>
+    <div class="guesser-sec">
+        <h1 class="guesser-header">{{gameName}}</h1>
+        <p> Read the Definition Below and Guess the Word Corresponding to it.
+            (Scoring: Correct = 3pts, Synonym = 1pt, Neither = 0pts) <p>
+        <ul class="word-list">
+            <div id="individual">
+            <li>
+                <a id="definition"> {{ definition }} </a> <br> <!-- Link and Title-->
+                <form action="/word_guesser" method="POST">
+                    <!-- Hidden fields to pass the word and synonyms -->
+                    <input type="hidden" name="word_to_guess" value="{{ word }}">
+                    <input type="hidden" name="syn_list" value="{{ syn_list | join(', ') }}">
+                    <input type="hidden" name="point_tracker" value="{{points}}">
+                    <input class="word-input" type="text" name="word" placeholder="Word"><br><br>
+                    <input type="submit" class="word-button" id="guess" name="guess" value="Guess">
+                </form>
+
+                <p id="syn_list">{{ syn_list}} </p><br>
+                <p id="points">Points: {{points}}</p><br>
+            </li>
+                <br>
+            </div>
+        </ul>
+    </div>
 </body>
 </html>

@@ -12,6 +12,15 @@ DBModule.init_db()
 def home():
     return render_template("home.html")
 
+app = Flask(__name__)
+app.secret_key = os.urandom(32)
+
+DBModule.init_db()
+
+@app.route('/', methods = ['GET', 'POST'])
+def home():
+    return render_template("home.html")
+
 @app.route('/login', methods = ['GET', 'POST'])
 def login(): #note to self, add flash messages in this
     if 'username' in session:
@@ -21,7 +30,10 @@ def login(): #note to self, add flash messages in this
         password = request.form['password']
         if DBModule.findUser(username, password):
             session['username'] = username
+            flash(f"Successfully Logged in!", category="success")
             return redirect(url_for('home'))
+        else: 
+            flash(f"No account found with this username and password", category="error")
     return render_template("login.html")
 
 @app.route('/register', methods = ['GET', 'POST'])
@@ -35,9 +47,20 @@ def register():
         if password == password1:
             if DBModule.registerUser(username, password):
                 session ['username'] = username
+                flash(f"Welcome {username}! You've been registered!", category="success")
                 return redirect(url_for('home'))
+            else:
+                flash(f"User already exists; Pick a different username", category="error")
+        else:
+            flash(f"Passwords don't match", category="error")
     return render_template("register.html")
 
+@app.route('/logout', methods = ['GET', 'POST'])
+def logout():
+    session.pop('username', None)
+    flash(f"Successfully logged out!", category="success")
+    return redirect(url_for('home'))
+    
 @app.route('/settings', methods = ['GET', 'POST'])
 def settings():
     if 'username' in session:
@@ -47,11 +70,6 @@ def settings():
 @app.route('/search/<query>', methods = ['GET', 'POST'])
 def search(query):
     return render_template("")
-
-@app.route('/logout', methods = ['GET', 'POST'])
-def logout():
-    session.pop('username', None)
-    return redirect(url_for('home'))
 
 @app.route('/memory_match', methods = ['GET', 'POST'])
 def memory_match():

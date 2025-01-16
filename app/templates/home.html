@@ -17,14 +17,32 @@
         </nav>
     </div>
     <br>
-    <div class = "gameList">
+    <div class = "container">
         <h2>Games</h2>
-        <ul>
-            <li><a href="{{url_for('memory_match')}}">Memory Match</a></li>
-            <li><a href="{{url_for('typing_test')}}">Typing Test</a></li>
-            <li><a href="{{url_for('word_guesser')}}">Word Guesser</a></li>
-            <li><a href="{{url_for('reaction_speed')}}">Reaction Speed</a></li>
-        </ul>
+        <div class="row">
+            <div class="col">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="https://th.bing.com/th/id/OIP.ySxEXQ89QN90k_2B3hy6oQHaHa?w=162&h=180&c=7&r=0&o=5&pid=1.7" alt="Card image cap">
+                    <div class="card-body">
+                      <p class="card-text"><a href="{{url_for('memory_match')}}">Memory Match</a></p>
+                    </div>
+                  </div>
+            </div>
+            <div class="col">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="https://www.iconexperience.com/_img/v_collection_png/256x256/shadow/keyboard_key_a.png" alt="Card image cap">
+                    <div class="card-body">
+                      <p class="card-text"><a href="{{url_for('typing_test')}}">Typing Test</a></p>
+                    </div>
+                  </div>
+            </div>
+            <div class="col">
+                <a href="{{url_for('word_guesser')}}">Word Guesser</a>
+            </div>
+            <div class = "col">
+                <a href="{{url_for('reaction_speed')}}">Reaction Speed</a>
+            </div>
+        </div>
     </div>
     <br>
     <a href = "{{url_for('logout')}}" style="text-decoration: none;"> Logout </a>

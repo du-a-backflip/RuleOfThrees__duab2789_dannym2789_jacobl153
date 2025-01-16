@@ -1,12 +1,22 @@
-var randomtxt = "";
 var typetext = document.getElementById("typetext");
-var txtstore = typetext.innerHTML;
 var timer = document.getElementById("timer");
 var WPM = document.getElementById("livescore");
+var again = document.getElementById("again-hide");
+var scoretxt = document.getElementById("scoretxt");
+var highscoretxt = document.getElementById("topscore");
+var txtstore = typetext.innerHTML;
+var txtlen = txtstore.length;
+var timeflow = false;
+var rendered = false;
 var typestate = false;
+var gamestate = false;
+var errorstate = false;
+var winstate = false;
 var typestore = "";
 var punct = /\p{P}/gu;
-var errorstate = false;
+var score = 0;
+var highscore = 0;
+var timeID = 0;
 var errorcount = 0;
 var totalcount = 0;
 var blinkcount = 0;
@@ -23,7 +33,7 @@ function render(){
         chrSpan.innerText = chr;
         typetext.appendChild(chrSpan);
     });
-    timefxn();
+    rendered = true;
 }
 
 document.addEventListener("click", function(event){
@@ -37,6 +47,7 @@ document.addEventListener("click", function(event){
         });
         return;
     };
+    gamestate = true;
     typestate = true;
     typetext.id = "typetext-active";
     var blinkarray = typetext.querySelectorAll('span.inactive, span.blinker');
@@ -106,16 +117,70 @@ document.addEventListener("keydown", function(event){
 });
 
 function timefxn(){
-    timer.innerHTML = 0;
+    timer.innerText = 0;
     var init = Date.now();
-    setInterval(function(){
+    timeID = setInterval(function(){
         time = Math.abs(Math.floor((init - Date.now()) / 1000));
-        timer.innerHTML = Math.floor(time/60) + ":" + Math.floor(time%60/10) + Math.floor(time%60 - Math.floor(time%60/10) * 10);
-    }, 100)
+        timer.innerText = Math.floor(time/60) + ":" + Math.floor(time%60/10) + Math.floor(time%60 - Math.floor(time%60/10) * 10);
+        livescore.innerText = Math.max(0, Math.min(Math.floor(((totalcount/4) - errorcount) / (time/60)), 999));
+    }, 100);
+    timeflow = true;
 }
 
-setInterval(function(){
-    livescore.innerHTML = Math.max(0, Math.min(Math.floor(((totalcount/4) - errorcount) / (time/60)), 999));
-}, 100);
+again.addEventListener("click", function(){
+    if (winstate){
+        txtstore = typetext.innerText;
+        WPM.innerText = "WPM DISPLAYED HERE";
+        timer.innerText = "The timer starts when you start typing!";
+        txtlen = txtstore.length;
+        timeflow = false;
+        rendered = false;
+        typestate = false;
+        gamestate = false;
+        errorstate = false;
+        winstate = false;
+        typestore = "";
+        punct = /\p{P}/gu;
+        timeID = 0;
+        errorcount = 0;
+        totalcount = 0;
+        blinkcount = 0;
+        time = 0;
 
-render();
+        typetext.classList.remove("hide");
+        timer.classList.remove("hide");
+        WPM.id = "livescore";
+        again.id = "again-hide";
+    }
+});
+
+function gameloop(){
+    setInterval(function(){
+        if (!gamestate && !rendered){
+            render();
+        }
+        if (gamestate && !timeflow && typestore.length > 0){
+            timefxn();
+        }
+        if (typestore.length >= txtlen && !winstate){
+            clearInterval(timeID);
+            winstate = true;
+            gamestate = false;
+            typestate = false;
+            typetext.classList.add("hide");
+            timer.classList.add("hide");
+            WPM.id = "livescore-result";
+            again.id = "again";
+            
+            score = parseInt(WPM.innerText);
+            scoretxt.innerHTML = score + " WPM";
+            if (score > highscore || highscoretxt.innerHTML == ""){
+                highscoretxt.innerText = score + " WPM";
+                initial = true;
+            }
+            //console.log("heheheheheheheheh done");
+        }
+    }, 50);
+}
+
+gameloop();

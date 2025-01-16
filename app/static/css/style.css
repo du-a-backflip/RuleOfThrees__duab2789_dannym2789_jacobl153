@@ -3,7 +3,6 @@
     background: #0096FF;
     color: aliceblue;
     width: 100%;
-    margin-left: -1rem;
 }
 
 #interact-txt{
@@ -44,6 +43,33 @@
     margin: auto;
 }
 
+#livescore{
+    font-size: 3rem;
+}
+
+#livescore-result{
+    font-size: 5rem;
+}
+
+#timer{
+    font-size: 1.2rem;
+}
+
+#again-hide{
+    display:none;
+}
+
+#again{
+    background: aliceblue;
+    color:#0096FF;
+    font-size: 1.5rem;
+    border-radius: 1rem;
+    width: 20%;
+    padding: 1rem;
+    margin: auto;
+    cursor: pointer;
+}
+
 .correct {
     background-color: rgb(76, 224, 121);
 }
@@ -74,4 +100,8 @@
 100% {
     opacity: 1;
 }
+}
+
+.hide {
+    display: none;
 }

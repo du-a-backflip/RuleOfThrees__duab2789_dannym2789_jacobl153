@@ -25,6 +25,8 @@ def login(): #note to self, add flash messages in this
             return redirect(url_for('home'))
         else:
             wrongInformation = True
+    else:
+        wrongInformation = False
     return render_template("login.html", wrongInfo = wrongInformation)
 
 @app.route('/register', methods = ['GET', 'POST'])

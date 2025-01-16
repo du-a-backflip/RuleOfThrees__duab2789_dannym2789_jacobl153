@@ -7,6 +7,14 @@ app = Flask(__name__)
 app.secret_key = os.urandom(32)
 
 DBModule.init_db()
+@app.route('/', methods = ['GET', 'POST'])
+def home():
+    return render_template("home.html")
+
+app = Flask(__name__)
+app.secret_key = os.urandom(32)
+
+DBModule.init_db()
 
 @app.route('/', methods = ['GET', 'POST'])
 def home():
@@ -70,22 +78,28 @@ def memory_match():
 @app.route('/typing_test', methods = ['GET', 'POST'])
 def typing_test():
     quote = APIModule.getQuote()
-    key = APIModule.getKey("keys/quotesAPI.txt")
     print(2)
-    return render_template("type_test.html", quote = quote, key=key)
+    return render_template("type_test.html", quote = quote)
 
 
 @app.route('/word_guesser', methods = ['GET', 'POST'])
 def word_guesser():
-    points = 0
+    lives = 3
+    turns = 0
+    gif = ""
     text = DBModule.get_rand_word()[0]
     all_info = text.split("+")
     word = all_info[0]
     definition = all_info[1]
     syn_list = all_info[2].split(", ")
     if request.method == 'POST':
-        points = DBModule.check_guess()
-    return render_template("word_guess.html", word = word, definition = definition, syn_list = syn_list, points = points, gameName = "Word Guesser")
+        lives = DBModule.check_guess()
+        turns = int(request.form.get('turns')) + 1
+        if lives == 0:
+            flash(f"You ran out of lives! New game started...", category="error")
+            turns = 0
+            lives = 3
+    return render_template("word_guess.html", word = word, definition = definition, syn_list = syn_list, lives = lives, turns= turns, gameName = "Word Guesser")
 
 
 @app.route('/reaction', methods =['GET', 'POST'])

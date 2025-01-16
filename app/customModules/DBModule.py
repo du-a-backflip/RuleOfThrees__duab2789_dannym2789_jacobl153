@@ -86,17 +86,17 @@ def registerUser(username, password):
     return False
 
 def check_guess():
-    points = int(request.form.get('point_tracker'))
+    lives = int(request.form.get('lives'))
     guess = request.form.get('word')
     word = request.form.get("word_to_guess")
     syn_list = request.form.get('syn_list')
-    syn_list = syn_list[:-1].replace("\'", "").split(", ")
+    syn_list = syn_list[:].replace("\'", "").split(", ")
     print(guess)
     print(word)
     print(syn_list)
     if guess == word:
-        return points + 3
+        return lives + 1
     for syn in syn_list:
         if guess == syn:
-            return points + 1
-    return points
+            return lives
+    return lives-1

@@ -52,3 +52,26 @@
     background-color: rgb(236, 53, 53);
     text-decoration: underline;
 }
+
+.blinker {
+    height: 2rem;
+    margin-bottom: -.5rem;
+    width: 2px;
+    background: rgb(29, 41, 41);
+    opacity: 0;
+    display: inline-block;
+    animation: blink .5s step-start infinite alternate;
+}
+
+.blinker p{
+    display:inline;
+}
+
+@keyframes blink {
+50% {
+    opacity: 0;
+}
+100% {
+    opacity: 1;
+}
+}

@@ -66,3 +66,6 @@ colyiC -- 2025-01-16 4:27
 
 dannyM -- 2025-01-16 18:52
 * Debugged Word Typing Game
+
+dannyM -- 2025-01-16 21:27
+* Minor debugging

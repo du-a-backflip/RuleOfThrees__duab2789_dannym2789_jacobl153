@@ -10,10 +10,11 @@ htnl, body {
 .nav {
     background-color: white;
     list-style-type: none;
-    margin-left: -10px;
-    margin-right: -10px;
+    margin-left: -20px;
+    margin-right: -20px;
     margin-top: -10px;
     overflow: hidden;
+    width:120%;
 }
 
 .nav-object {
@@ -37,7 +38,7 @@ htnl, body {
 }
 
 .header {
-    margin-top: -50px;
+    margin-top: -72px;
     margin-left: -10px;
     margin-right: -10px;
     background: #0096FF;
@@ -131,15 +132,18 @@ htnl, body {
 /* typing test */
 #interact {
     color: white;
-    margin-top: -48px;
+    margin-top: -15px;
     margin-left: -10px;
     margin-right: -10px;
     background: #0096FF;
     padding-bottom: 30px;
+    padding-top: 10px;
+    text-align: center;
 }
 
 #interact-txt{
     text-align: center;
+    font-size: 2rem;
 }
 
 #typetext {
@@ -343,6 +347,7 @@ htnl, body {
 .react-sec {
     padding-top: 50px;
     padding-bottom: 50px;
+    padding:20rem;
     margin-top: -16px;
     margin-left: -10px;
     margin-right: -10px;

@@ -1,4 +1,4 @@
-var interactable = document.getElementById("react-sec");
+var interactable = document.getElementById("interact");
 var scoretxt = document.getElementById("scoretxt");
 var text = document.getElementById("gametext");
 var hightxt = document.getElementById("topscore");
@@ -45,6 +45,7 @@ interactable.addEventListener("click", function(){
             hightxt.textContent = score + " milliseconds";
             initial = true;
         }
+        /*
         fetch('/score', {
             method: 'POST',
             headers: {
@@ -62,6 +63,7 @@ interactable.addEventListener("click", function(){
         .catch(error => {
             console.error('Error saving score:', error);
         });
+        */
     }
     else if (early){
         early = false;

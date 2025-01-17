@@ -77,8 +77,9 @@ def memory_match():
 @app.route('/typing_test', methods = ['GET', 'POST'])
 def typing_test():
     quote = APIModule.getQuote()
+    key = APIModule.getKey("keys/quotesAPI.txt")
     print(2)
-    return render_template("type_test.html", quote = quote)
+    return render_template("type_test.html", quote = quote, key=key)
 
 
 @app.route('/word_guesser', methods = ['GET', 'POST'])

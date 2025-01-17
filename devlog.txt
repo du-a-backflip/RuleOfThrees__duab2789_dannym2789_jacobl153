@@ -63,3 +63,6 @@ colyiC -- 2025-01-16 4:27
 
 colyiC -- 2025-01-16 4:27
 * Finished login page html/css and started reaction speed 
+
+dannyM -- 2025-01-16 18:52
+* Debugged Word Typing Game

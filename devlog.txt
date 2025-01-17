@@ -55,6 +55,10 @@ colyiC -- 2025-01-16 2:38
 colyiC -- 2025-01-16 3:19
 * Finished registration page css/html
 
+jacobL -- 2025-01-16 3:42
+* Added random quote for typing test
+* Fixed pathing problems.
+
 colyiC -- 2025-01-16 4:04
 * Edited typing test html/css
 
@@ -63,6 +67,9 @@ colyiC -- 2025-01-16 4:27
 
 colyiC -- 2025-01-16 4:27
 * Finished login page html/css and started reaction speed 
+
+jacobL -- 2025-01-16 17:34
+* Added lives to Word Guesser + Finished
 
 dannyM -- 2025-01-16 18:52
 * Debugged Word Typing Game

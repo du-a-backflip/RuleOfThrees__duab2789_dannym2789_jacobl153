@@ -29,6 +29,7 @@ def login(): #note to self, add flash messages in this
         password = request.form['password']
         if DBModule.findUser(username, password):
             session['username'] = username
+            session['id'] = DBModule.getID(username)
             flash(f"Successfully Logged in!", category="success")
             return redirect(url_for('home'))
         else:
@@ -46,6 +47,7 @@ def register():
         if password == password1:
             if DBModule.registerUser(username, password):
                 session ['username'] = username
+                session['id'] = DBModule.getID(username)
                 flash(f"Welcome {username}! You've been registered!", category="success")
                 return redirect(url_for('home'))
             else:
@@ -57,6 +59,7 @@ def register():
 @app.route('/logout', methods = ['GET', 'POST'])
 def logout():
     session.pop('username', None)
+    session.pop('id', None)
     flash(f"Successfully logged out!", category="success")
     return redirect(url_for('home'))
 
@@ -65,10 +68,6 @@ def settings():
     if 'username' in session:
         return render_template('settings.html')
     return render_template("login.html")
-
-@app.route('/search/<query>', methods = ['GET', 'POST'])
-def search(query):
-    return render_template("")
 
 @app.route('/memory_match', methods = ['GET', 'POST'])
 def memory_match():
@@ -105,6 +104,20 @@ def word_guesser():
 @app.route('/reaction', methods =['GET', 'POST'])
 def reaction_speed():
     return render_template('reaction.html')
+
+@app.route('/score', methods=['GET', 'POST'])
+def score():
+    if 'username' in session:
+        data = request.get_json()
+        if 'score' in data and 'gameName' in data and 'highScore' in data:
+            game_name = data['gameName']
+            score = data['score']
+            '''
+            highScore = eval(data['highScore'])
+            print(highScore)
+            '''
+
+        
 
 
 if __name__ == "__main__":

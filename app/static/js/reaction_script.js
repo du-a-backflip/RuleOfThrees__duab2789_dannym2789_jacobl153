@@ -45,6 +45,23 @@ interactable.addEventListener("click", function(){
             hightxt.textContent = score + " milliseconds";
             initial = true;
         }
+        fetch('/score', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({  gameName: "Reaction Time",
+                                    score: score,
+                                    highScore: initial
+                                    })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Score saved successfully');
+        })
+        .catch(error => {
+            console.error('Error saving score:', error);
+        });
     }
     else if (early){
         early = false;

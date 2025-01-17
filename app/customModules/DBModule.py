@@ -31,6 +31,16 @@ def init_db():
             password TEXT NOT NULL,
             favorites TEXT NOT NULL)
             ''')
+    c.execute('''
+            CREATE TABLE IF NOT EXISTS history (
+            entryID INTEGER PRIMARY KEY AUTOINCREMENT,
+            userID INTEGER,
+            entryDate DATETIME DEFAULT CURRENT_TIMESTAMP, 
+            gameType TEXT NOT NULL, 
+            score TEXT NOT NULL,
+            highscore BOOLEAN NOT NULL DEFAULT 0,
+            FOREIGN KEY ('userID') REFERENCES users (user_id))
+            ''')   
     conn.commit()
     conn.close()
 
@@ -69,10 +79,10 @@ def findUser(username, password):
     c = db.cursor()
     c.execute("SELECT * FROM users WHERE username = ?", (username, ))
     user = c.fetchone()
-    print(user)
+    #print(user)
     if user is not None:
-        print(user)
-        return password == user[1]
+        #print(user[2])
+        return password == user[2]
     return False
 
 def registerUser(username, password):
@@ -84,6 +94,13 @@ def registerUser(username, password):
         addUser(username, password)
         return True
     return False
+
+def getID(username):
+    db = sqlite3.connect('user_info.db')
+    c = db.cursor()
+    c.execute("SELECT * FROM users WHERE username = ?", (username, ))
+    user = c.fetchone()
+    return user[0]
 
 def check_guess():
     lives = int(request.form.get('lives'))

@@ -68,11 +68,18 @@ colyiC -- 2025-01-16 4:27
 colyiC -- 2025-01-16 4:27
 * Finished login page html/css and started reaction speed 
 
+duaB -- 2025-01-16 10:45
+* Added alerts/notifications for user
+* Changed navbar so login and register are only shown to people not logged in.
+
 jacobL -- 2025-01-16 17:34
 * Added lives to Word Guesser + Finished
 
 dannyM -- 2025-01-16 18:52
 * Debugged Word Typing Game
+
+duaB -- 2025-01-16 19:22
+* Minor debugging for login
 
 dannyM -- 2025-01-16 21:27
 * Minor debugging
